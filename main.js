@@ -50,19 +50,19 @@ getID("btnSinhNam").addEventListener("click", function() {
   let so8 = parseInt(namSinh[7]);
   let so9 = parseInt(namSinh[8]);
   let so10 = parseInt(namSinh[9]);
-
-  const tongDau = (so1 + so2 + so3 + so4 + so5) % 9;
-  const tongCuoi = (so6 + so7 + so8 + so9 + so10) % 9;
-  const tongDong =
-    (so1 + so2 + so3 + so4 + so5 + so6 + so7 + so8 + so9 + so10) % 6;
-  const giaiQue = tongDau + "" + tongCuoi;
+  let tongSODAU = so1 + so2 + so3 + so4 + so5;
+  let tongSOCUOI = so6 + so7 + so8 + so9 + so10;
+  const tongDau = tongSODAU-(parseInt((tongSODAU) / 9))*9;
+  const tongCuoi =tongSOCUOI- (parseInt((tongSOCUOI) / 9))*9;
+  const tongDong = (so1 + so2 + so3 + so4 + so5 + so6 + so7 + so8 + so9 + so10) % 6;
 
   console.log(tongDau);
   console.log(tongCuoi);
   console.log(tongDong);
-  console.log(giaiQue);
 
-  var soChi = parseInt(namSinh[2] + soCan) % 12;
+
+const giaiQue = tongDau.toString() +tongCuoi.toString();
+
 
   //     tongDau = "";
   //    tongCuoi = "";
@@ -102,7 +102,7 @@ getID("btnSinhNam").addEventListener("click", function() {
 
       break;
     case 8:
-      document.getElementById("hinhAnh").src = "./img/can.jpg";
+      document.getElementById("hinhAnh").src = "./img/can1.jpg";
 
       break;
     case 9:
@@ -151,7 +151,7 @@ getID("btnSinhNam").addEventListener("click", function() {
 
       break;
     case 8:
-      document.getElementById("hinhAnh1").src = "./img/can.jpg";
+      document.getElementById("hinhAnh1").src = "./img/can1.jpg";
 
       break;
     case 9:
@@ -167,6 +167,8 @@ getID("btnSinhNam").addEventListener("click", function() {
   // * Số quẻ khảm 1, khôn 2, chấn 3, tốn 4, số 5
   //  *  08563 61368
   //  *  (nam = khôn, nữ = cấn), càn số 6, đoài số 7, cấn 8, ly 9
+  console.log(giaiQue);
+
   switch (giaiQue) {
     case "76":
       getID("loiGiai").innerHTML = `
@@ -620,6 +622,7 @@ getID("btnSinhNam").addEventListener("click", function() {
                 BÁT THUẦN CẤN<br>
                 Động hào ${tongDong}
               `;
+              break;
     // 9
     case "90":
       getID("loiGiai").innerHTML = `
